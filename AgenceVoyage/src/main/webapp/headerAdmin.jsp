@@ -172,7 +172,7 @@ if (session.getAttribute("admin") == null) {
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">
+              <a class="nav-link" href="homeAdmin.jsp">
                 <span class="menu-title">Home</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
@@ -197,7 +197,7 @@ if (session.getAttribute("admin") == null) {
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="pages/forms/basic_elements.html">
+              <a class="nav-link" href="listReservations">
                 <span class="menu-title">Suivi des Voyages</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
               </a>

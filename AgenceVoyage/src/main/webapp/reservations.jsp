@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,82 +20,14 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="assets/images/favicon.ico" />
-    <style>
- .button {
-  background-color: #A45EE5; /* Green */
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-}
-
-.button1 {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #A45EE5;
-}
-
-.button1:hover {
-  background-color: #A45EE5;
-  color: white;
-}
-
-
-.button span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-
-.button span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-
-.button:hover span {
-  padding-right: 25px;
-}
-
-.button:hover span:after {
-  opacity: 1;
-  right: 0;
-}
-  
-  </style>
-  <style>
- .btn {
-  background-color: #FFFFFF; /* Green */
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-}  
-  </style>
   </head>
   <body>
     <div class="container-scroller">
       <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo" href="../../index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
-          <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+          <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -259,7 +191,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../../index.html">
+              <a class="nav-link" href="index.html">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
@@ -278,7 +210,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../../pages/icons/mdi.html">
+              <a class="nav-link" href="pages/icons/mdi.html">
                 <span class="menu-title">Icons</span>
                 <i class="mdi mdi-contacts menu-icon"></i>
               </a>
@@ -340,151 +272,65 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Form elements </h3>
+              <h3 class="page-title"> Basic Tables </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+                  <li class="breadcrumb-item"><a href="#">Tables</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Basic tables</li>
                 </ol>
               </nav>
             </div>
             <div class="row">
-              <div class="col-md-6 grid-margin stretch-card">
+             
+            
+              <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Modification d'un voyage</h4>
-                    <p class="card-description"> entrer les informations necessaire </p>
-                    <form class="forms-sample" enctype='multipart/form-data' action="editVoyage" method="post" >
-                      <div class="form-group row">
-                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Nom du voyage</label>
-                        <div class="col-sm-9">
-                          <input type="text" value="${voyage.nom}" name="nom" class="form-control" id="exampleInputUsername2" placeholder="nom">
-                        </div>
-                      </div>
-                      <input type="hidden" value="${voyage.id}" name="id" >
-                      <div class="form-group row">
-                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Départ</label>
-                        <div class="col-sm-9">
-                          <input type="text"  name="depart" value="${voyage.dateDepart}" class="form-control" id="exampleInputEmail2" placeholder="depart">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="exampleInputMobile" class="col-sm-3 col-form-label">Déstination</label>
-                        <div class="col-sm-9">
-                          <input type="text" name="destination" value="${voyage.destination}" class="form-control" id="exampleInputMobile" placeholder="destination">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Date de départ</label>
-                        <div class="col-sm-9">
-                          <input type="date" name="dateDepart" value="${voyage.dateDepart}" class="form-control" id="exampleInputPassword2" placeholder="date">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Durée
-                        </label>
-                        <div class="col-sm-9">
-                      <select name="duree" class="form-control" id="exampleFormControlSelect2">
-                        <option>Weekend</option>
-                        <option>Semaine</option>
-                      </select>
-                    </div>
-                        </div>
-                      
+                    <h4 class="card-title">Suivi des Commandes</h4>
+                    <p class="card-description"> 
+                    	<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+                    </p>
+                    <table id="myTable" class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th> Client </th>
+                          <th> Voyage </th>
+                          <th> Date de réservation </th>                     
+                          <th> Date de voyage </th>
+                          <th> Action </th>
 
-                       <div class="form-group row">
-                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Photo</label>
-                        <div class="col-sm-9">
-                          <input type="file" name="image" class="form-control" id="exampleInputPassword2" placeholder="upload file">
-                        </div>
-                      </div>
-                       <div class="form-group row">
-                        <label for="exampleInputPassword2"  class="col-sm-3 col-form-label">Prix unitaire</label>
-                        <div class="col-sm-9">
-                          <input type="text" name="prix" value="${voyage.prix}" class="form-control" id="exampleInputPassword2" placeholder="prix">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                      <label for="exampleFormControlSelect2" class="col-sm-3 col-form-label">Theme</label>
-                      <div class="col-sm-9">
-                      <select name="theme" class="form-control" id="exampleFormControlSelect2">
-                        <option>Desert</option>
-                        <option>Foret</option>
-                        <option>Neige</option>
-                        <option>Lac</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                      <label for="exampleFormControlSelect2" class="col-sm-3 col-form-label">Type du voyage</label>
-                      <div class="col-sm-9">
-                      <select name="typeVoyage" class="form-control" id="exampleFormControlSelect2">
-                        <option>Famille</option>
-                        <option>Individuel</option>
-                        <option>CircuitAccompane</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                      <label for="exampleFormControlSelect2" class="col-sm-3 col-form-label">Confort</label>
-                      <div class="col-sm-9">
-                      <select name="confort" class="form-control" id="exampleFormControlSelect2">
-                        <option>Refuge</option>
-                        <option>Standart</option>
-                        <option>Supérieur</option>
-                        <option>Haut de gamme</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                      <label for="exampleFormControlSelect2" class="col-sm-3 col-form-label">Difficulté</label>
-                      <div class="col-sm-9">
-                      <select name="difficulte" class="form-control" id="exampleFormControlSelect2">
-                        <option>Facile</option>
-                        <option>Modere</option>
-                        <option>Soutenu</option>
-                      </select>
-                    </div>
-                  </div>
-<!--                   <div class="form-group row"> -->
-<!--                       <label for="exampleFormControlSelect2" class="col-sm-3 col-form-label">Hébergement</label> -->
-<!--                       <div class="col-sm-9"> -->
-<!--                       <select class="form-control" id="exampleFormControlSelect2"> -->
-<%--                         <c:forEach items="${hebergements}" var="heberg"> --%>
-<%--   						 <option>${heberg.nom}</option> --%>
-<%-- 					   </c:forEach> --%>
-<!--                       </select> -->
-<!--                     </div> -->
-<!--                   </div> -->
-<!--                   <div class="form-group row"> -->
-<!--                       <label for="exampleFormControlSelect2" class="col-sm-3 col-form-label">Activité</label> -->
-<!--                       <div class="col-sm-9"> -->
-<!--                       <select class="form-control" id="exampleFormControlSelect2"> -->
-<%--                         <c:forEach  items="${activites}" var="activit"> --%>
-<%--   						 <option>${activit.nom} name="activite" </option> --%>
-<%-- 					   </c:forEach> --%>
-<!--                       </select> -->
-<!--                     </div> -->
-<!--                   </div> -->
-<!--                   <div class="form-group row"> -->
-<!--                       <label for="exampleFormControlSelect2" class="col-sm-3 col-form-label">Transport</label> -->
-<!--                       <div class="col-sm-9"> -->
-<!--                       <select class="form-control" id="exampleFormControlSelect2"> -->
-<%--                        <c:forEach items="${transports}" var="transport"> --%>
-<%--   						 <option>${transport.nom}</option> --%>
-<%-- 					   </c:forEach> --%>
-<!--                       </select> -->
-<!--                     </div> -->
-<!--                   </div> -->
-
-
-                      <button type="submit" class="button button1" style="vertical-align:middle"><span>Modifier </span></button>
-                      <button type="reset" class="btn btn-light">Reset</button>
-                    </form>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <c:forEach items="${reservations}" var="reservation">
+                        <tr>
+                        
+                          <td>
+                            ${reservation.client.nom}
+                          </td>
+                          <td> ${reservation.voyage.nom } </td>
+                          <td>
+                            azze
+                          </td>
+                          <td> ${reservation.voyage.dateDepart} </td>
+                          <td>
+												</a> <a class="btn btn-danger btn-sm"
+													href="cancelReservation?id=${reservation.id }">
+														<i class="fas fa-trash"> </i> Annuler
+												</a></td>
+												
+                        </tr>
+                         </c:forEach>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
+             
               
+             
+            </div>
+          </div>
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
           <footer class="footer">
@@ -511,7 +357,29 @@
     <script src="assets/js/misc.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
-    <script src="assets/js/file-upload.js"></script>
     <!-- End custom js for this page -->
+ 	  <script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script> 
   </body>
 </html>

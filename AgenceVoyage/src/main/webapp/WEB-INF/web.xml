@@ -48,4 +48,24 @@
     <servlet-name>ContactServlet</servlet-name>
     <url-pattern>/ContactServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UsernameAvailability</display-name>
+    <servlet-name>UsernameAvailability</servlet-name>
+    <servlet-class>web.UsernameAvailability</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UsernameAvailability</servlet-name>
+    <url-pattern>/UsernameAvailability</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ChatServlet</display-name>
+    <servlet-name>ChatServlet</servlet-name>
+    <servlet-class>web.ChatServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChatServlet</servlet-name>
+    <url-pattern>/ChatServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

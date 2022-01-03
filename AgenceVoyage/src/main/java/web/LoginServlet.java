@@ -1,7 +1,11 @@
 package web;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import beans.Client;
 import beans.Role;
 import beans.User;
+import beans.Voyage;
 import dao.ClientDao;
 import dao.ReservationDao;
 import dao.UserDao;
@@ -21,13 +26,14 @@ import dao.VoyageDao;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet(urlPatterns = { "/loginPage","/login","/HomeAdmin","/logout","/registerPage","/register","/HomeClient" })
+@WebServlet(urlPatterns = { "/loginPage","/login","/MainHome","/HomeAdmin","/logout","/registerPage","/register","/HomeClient" })
 public class LoginServlet extends HttpServlet {
 	
 	private UserDao userDao = new UserDao();
 	private ClientDao clientDao = new ClientDao();
 	private VoyageDao voyageDao = new VoyageDao(); 
 	ReservationDao reservationDao = new ReservationDao();
+	
 	
 	private static final long serialVersionUID = 1L;
 
@@ -53,12 +59,29 @@ public class LoginServlet extends HttpServlet {
 		}
 		if (request.getServletPath().equals("/HomeClient")) {
 			
+			List<Voyage> voyages1=new ArrayList<Voyage>();
+			if(voyageDao.listVoyages().size()>=2) {
+			for(int i=0;i<2;i++) {voyages1.add(voyageDao.listVoyages().get(i));}
+			request.setAttribute("randVoyages",voyages1);
+			}
+			List<Voyage> voyages2=new ArrayList<Voyage>();
+			if(voyageDao.listVoyages().size()>=4) {
+			for(int i=0;i<4;i++) {voyages2.add(voyageDao.listVoyages().get(i));}
+			request.setAttribute("PopVoyages",voyages2);}
+			
 			request.getRequestDispatcher("/homeClient.jsp").forward(request, response);
 		}
-if (request.getServletPath().equals("/HomeAdmin")) {
+		if (request.getServletPath().equals("/HomeAdmin")) {
 			
 			request.getRequestDispatcher("/homeAdmin.jsp").forward(request, response);
 		}
+	if (request.getServletPath().equals("/MainHome")) {
+	voyageDao.deleteExpiredVoyages();
+	List<Voyage> voyages=new ArrayList<Voyage>();
+	for(int i=0;i<2;i++) {voyages.add(voyageDao.listVoyages().get(i));}
+	request.setAttribute("randVoyages",voyages);
+	request.getRequestDispatcher("/mainHome.jsp").forward(request, response);
+}
 if (request.getServletPath().equals("/logout")) {
 	HttpSession session= request.getSession();
 	System.out.println("looooginout");
@@ -93,12 +116,13 @@ if (request.getServletPath().equals("/logout")) {
 			user.setUsername(request.getParameter("username"));
 			
 			if(userDao.isExist(user)==false) {
-				if(userDao.getPassword(user).equals(request.getParameter("password"))) {
-					user.setPassword(request.getParameter("password"));
+				if(userDao.getPassword(user).equals(hashPassword(request.getParameter("password")))) {
+					user.setPassword(hashPassword(request.getParameter("password")));
 					user.setRole(userDao.getUser(userDao.getId(user)).getRole());
 					if(user.getRole().equals(Role.admin)) {
 						request.setAttribute("countVoyages",voyageDao.countVoyage());
 						request.setAttribute("countClients",clientDao.countClients());
+						request.setAttribute("countReservations",reservationDao.countReservation());
 						session.setAttribute("admin", user);
 						request.getRequestDispatcher("/homeAdmin.jsp").forward(request, response);
 					}
@@ -136,7 +160,7 @@ if (request.getServletPath().equals("/logout")) {
 			client.setPays(request.getParameter("pays"));
 			client.setTelephone(request.getParameter("telephone"));
 			user.setUsername(request.getParameter("username"));
-			user.setPassword(request.getParameter("password"));
+	    	user.setPassword(hashPassword(request.getParameter("password")));
 			user.setRole(Role.client);
 			userDao.saveUser(user);
 			client.setUser(user);
@@ -144,7 +168,33 @@ if (request.getServletPath().equals("/logout")) {
 			response.sendRedirect("/AgenceVoyage/loginPage");
 			
 		}
-		
 	}
+	public String hashPassword(String passwordToHash) {
+		String generatedPassword = null;
+		try 
+	    {
+	      // Create MessageDigest instance for MD5
+	      MessageDigest md = MessageDigest.getInstance("MD5");
 
+	      // Add password bytes to digest
+	      md.update(passwordToHash.getBytes());
+
+	      // Get the hash's bytes
+	      byte[] bytes = md.digest();
+
+	      // This bytes[] has bytes in decimal format. Convert it to hexadecimal format
+	      StringBuilder sb = new StringBuilder();
+	      for (int i = 0; i < bytes.length; i++) {
+	        sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+	      }
+
+	      // Get complete hashed password in hex format
+	      generatedPassword = sb.toString();
+	    } catch (NoSuchAlgorithmException e) {
+	      e.printStackTrace();
+	    }
+    System.out.println(generatedPassword);
+    return generatedPassword;
+	}
 }
+

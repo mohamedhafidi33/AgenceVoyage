@@ -1,7 +1,10 @@
 package dao;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.persistence.Query;
 import javax.transaction.Transactional;
@@ -43,13 +46,34 @@ public class VoyageDao {
 		session.getTransaction().commit();
 	}
 	
+	public void deleteExpiredVoyages() {
+		List<Voyage> listVoyages=listVoyages();
+		for(Voyage item:listVoyages) {
+			if(item.getDateDepart().before(new java.sql.Date(System.currentTimeMillis()))) {
+				deleteVoyage(item.getId());
+			}
+		}
+	}
+	
 	public void updateVoyage(Voyage v) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		session.update(v);
 		session.getTransaction().commit();
 	}
-	
+	public List<Voyage> getTwoRandomVoyages(){
+		  Random rand = new Random();
+		  System.out.println(listVoyages().get(listVoyages().size()-1).getId());
+	      int random1 = ThreadLocalRandom.current().nextInt(listVoyages().get(0).getId(), listVoyages().get(listVoyages().size()-1).getId());
+	      int random2 = ThreadLocalRandom.current().nextInt(listVoyages().get(0).getId(), listVoyages().get(listVoyages().size()-1).getId());
+	      System.out.println(random1);
+	      
+	      
+	      List<Voyage> voyages=new ArrayList<Voyage>();
+	      voyages.add(getVoyage(random1));
+	      voyages.add(getVoyage(random2));
+	      return voyages;
+	}
 	public List<Voyage> getVoyageByDestination(String dest) {
 		Query req = session.createQuery("select v from Voyage v where v.destination like :x");
 		req.setParameter("x",dest);
@@ -93,6 +117,13 @@ public class VoyageDao {
 	public List<Voyage> getVoyageByTheme(Theme theme) {
 		Query req = session.createQuery("select v from Voyage v where v.theme like :x");
 		req.setParameter("x",theme);
+		List<Voyage> voyages=req.getResultList();
+		return voyages;
+	}
+	public List<Voyage> getVoyageByPrix(double min,double max) {
+		Query req = session.createQuery("select v from Voyage v where v.prix between :x and :y");
+		req.setParameter("x",min);
+		req.setParameter("y", max);
 		List<Voyage> voyages=req.getResultList();
 		return voyages;
 	}

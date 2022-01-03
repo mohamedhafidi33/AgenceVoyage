@@ -2,6 +2,7 @@ package web;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.Blob;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -26,8 +27,10 @@ import beans.Client;
 import beans.Confort;
 import beans.Difficulte;
 import beans.Dure;
+import beans.Hebergement;
 import beans.Reservation;
 import beans.Theme;
+import beans.Transport;
 import beans.TypeVoyage;
 import beans.Voyage;
 import dao.ActiviteDao;
@@ -40,8 +43,8 @@ import dao.VoyageDao;
 /**
  * Servlet implementation class TripServlet
  */
-
-@WebServlet(urlPatterns = {"/addVoyagePage","/panier","/detailVoyage","/reserverVoyage","/chercher","/listVoyages","/addVoyage","/updateVoyagePage","/deleteVoyage","/editVoyage","/editVoyagePage"})
+												
+@WebServlet(urlPatterns = {"/addVoyagePage","/annulerReservation","/displayImage","/panier","/cancelReservation","/detailVoyage","/listReservations","/reserverVoyage","/chercher","/listVoyages","/addVoyage","/updateVoyagePage","/deleteVoyage","/editVoyage","/editVoyagePage"})
 @MultipartConfig(maxRequestSize=1024*1024*5*5)
 public class TripServlet extends HttpServlet {
 	
@@ -65,12 +68,12 @@ public class TripServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		HttpSession session= request.getSession();
 		if(request.getServletPath().equals("/addVoyagePage")) {
-			request.setAttribute("transports",transportDao.listTransports());
-			request.setAttribute("activites",activiteDao.listActivites());
-			request.setAttribute("hebergements",hebergementDao.listHebergements());
+			//request.setAttribute("transports",transportDao.listTransports());
+			//request.setAttribute("activites",activiteDao.listActivites());
+			//request.setAttribute("hebergements",hebergementDao.listHebergements());
 			request.getRequestDispatcher("/addVoyage.jsp").forward(request, response);
 		}
 		
@@ -79,11 +82,20 @@ public class TripServlet extends HttpServlet {
 			request.getRequestDispatcher("/updateVoyage.jsp").forward(request, response);
 		}
 		if(request.getServletPath().equals("/panier")) {
-			
-			request.setAttribute("reservations", reservationDao.reservationsByClient((Client)session.getAttribute("client")));
+			List<Reservation> clientReservations= reservationDao.reservationsByClient((Client)session.getAttribute("client"));
+			double amount=0;
+			for(Reservation reservation:clientReservations) {
+			amount+=voyageDao.getVoyage(reservation.getVoyage().getId()).getPrix();
+			System.out.println("somme "+amount);
+			}
+			request.setAttribute("amount",amount );
+			request.setAttribute("reservations",clientReservations );
 			request.getRequestDispatcher("/panier.jsp").forward(request, response);
 		}
-		
+		if(request.getServletPath().equals("/cancelReservation")) {
+			reservationDao.deleteReservation(Integer.parseInt(request.getParameter("id").trim()));
+			response.sendRedirect("/AgenceVoyage/listReservations");
+		}
 		if(request.getServletPath().equals("/deleteVoyage")) {
 			voyageDao.deleteVoyage(Integer.parseInt(request.getParameter("id").trim()));
 			response.sendRedirect("/AgenceVoyage/updateVoyagePage");
@@ -105,8 +117,16 @@ public class TripServlet extends HttpServlet {
 			Reservation reservation = new Reservation();
 			reservation.setClient((Client)session.getAttribute("client"));
 			reservation.setVoyage(voyageDao.getVoyage(Integer.parseInt(request.getParameter("id").trim())));
+			long millis=System.currentTimeMillis();  
+	        java.sql.Date date=new java.sql.Date(millis);  
+			reservation.setDateReservation(date);
 			reservationDao.saveReservation(reservation);
 			response.sendRedirect("/AgenceVoyage/panier");
+		}
+		if(request.getServletPath().equals("/listReservations")) {
+			
+			request.setAttribute("reservations",reservationDao.listReservationss());
+			request.getRequestDispatcher("/reservations.jsp").forward(request, response);
 		}
 		if(request.getServletPath().equals("/listVoyages")) {
 			List<Voyage> voyages=voyageDao.listVoyages();
@@ -123,9 +143,31 @@ public class TripServlet extends HttpServlet {
 //			}
 			request.setAttribute("voyages", voyages);
 			//request.setAttribute("trips",trips);
+			
+			//System.out.println((Voyage)request.getAttribute("voyages"));
 			request.getRequestDispatcher("/voyagesList.jsp").forward(request, response);
 		}
-		
+		if(request.getServletPath().equals("/displayImage")) {
+			Blob image=voyageDao.getVoyage(Integer.parseInt(request.getParameter("id").trim())).getImage();
+			System.out.println("hellooooo"+Integer.parseInt(request.getParameter("id").trim()));
+			byte[] byteArray = null;
+			try {
+				byteArray=image.getBytes(1, (int) image.length());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			response.setContentType("image/gif");
+			OutputStream os=response.getOutputStream();
+			os.write(byteArray);
+			os.flush();
+			os.close();
+			
+		}									
+		if(request.getServletPath().equals("/annulerReservation")) {
+			reservationDao.deleteReservation((Integer.parseInt(request.getParameter("id").trim())));
+			response.sendRedirect("/AgenceVoyage/panier");
+		}
 		
 	}
 
@@ -142,6 +184,7 @@ public class TripServlet extends HttpServlet {
 			System.out.println(request.getParameter("confort"));
 			voyage.setDateDepart(Date.valueOf(request.getParameter("dateDepart")));
 			voyage.setDestination(request.getParameter("destination"));
+			voyage.setDescription(request.getParameter("description"));
 			voyage.setDifficulte(Difficulte.valueOf(request.getParameter("difficulte")));
 			voyage.setDure(Dure.valueOf(request.getParameter("duree")));
 			voyage.setTheme(Theme.valueOf(request.getParameter("theme")));
@@ -156,11 +199,57 @@ public class TripServlet extends HttpServlet {
 			voyage.setImage(data);
 			voyage.setPrix(Double.parseDouble(request.getParameter("prix")));
 			voyage.setTypeVoyage(TypeVoyage.valueOf(request.getParameter("typeVoyage")));
-			//List<Activite> activites=new ArrayList<Activite>();
-			//request.getParameter("activite");
-			//voyage.setActivites();
-			//voyage.setActivites(request.getParameter("activite"));
+			
 			voyageDao.saveVoyage(voyage);
+			//int idVoyage=voyage.getId();
+
+			System.out.println("first id"+voyage.getId());
+			List<Activite> activites=new ArrayList<Activite>();
+			String[] list1=request.getParameterValues("activite");
+			if(list1!=null) {
+			for (String i:list1) {
+				Activite activite=new Activite();
+					activite.setNom(i);
+					activite.setVoyage(voyage);
+					activites.add(activite);
+			}
+			voyage.setActivites(activites);
+			for(Activite activite:activites) {
+			activiteDao.saveActivite(activite);}
+			}
+			//=================+++++++++++++++++++++++++++++++++++++++++++======================================//
+			//voyage=voyageDao.getVoyage(idVoyage);
+			System.out.println("second id"+voyage.getId());
+			List<Hebergement> hebergements=new ArrayList<Hebergement>();
+			String[] list3=request.getParameterValues("hebergement");
+			if(list3!=null) {
+			for (String i:list3) {
+				Hebergement hebergement=new Hebergement();
+					hebergement.setNom(i);
+					hebergement.setVoyage(voyage);
+					hebergements.add(hebergement);
+			}
+			voyage.setHebergements(hebergements);
+			for(Hebergement hebergement:hebergements) {
+				hebergementDao.saveHeberement(hebergement);}
+			}
+			//=================+++++++++++++++++++++++++++++++++++++++++++======================================//
+			//voyage=voyageDao.getVoyage(idVoyage);
+
+			System.out.println("third id"+voyage.getId());
+			List<Transport> transports=new ArrayList<Transport>();
+			String[] list2=request.getParameterValues("transport");
+			if(list2!=null) {
+			for (String i:list2) {
+				Transport transport=new Transport();
+					transport.setNom(i);
+					transport.setVoyage(voyage);
+					transports.add(transport);
+			}
+			voyage.setTransports(transports);
+			for(Transport transport:transports) {
+			transportDao.saveTransport(transport);}
+			}
 			response.sendRedirect("/AgenceVoyage/updateVoyagePage");
 		}
 		
@@ -191,15 +280,66 @@ public class TripServlet extends HttpServlet {
 		}
 		if(request.getServletPath().equals("/chercher")) {
 			List <Voyage> voyages=new ArrayList<Voyage>();
-			System.out.println("them"+request.getParameter("theme"));
-			if(!request.getParameter("theme").equals("0")&&(!request.getParameter("destination").equals("0"))) {
-			voyages.addAll(voyageDao.getVoyageByTheme(Theme.valueOf(request.getParameter("theme"))));	
-			voyages.addAll(voyageDao.getVoyageByDestination(request.getParameter("destination")));
-		}
-			for(Voyage voyage:voyages) {
-				System.out.println(voyage.getNom());
+			if(!request.getParameter("destination").equals("-")){
+				voyages.addAll(voyageDao.getVoyageByDestination(request.getParameter("destination")));
 			}
+			if(!request.getParameter("theme").equals("-")){
+				voyages.addAll(voyageDao.getVoyageByTheme(Theme.valueOf(request.getParameter("theme"))));
+			}
+			if(!request.getParameter("date").equals("")){
+				System.out.println("date"+request.getParameter("date"));
+				voyages.addAll(voyageDao.getVoyageByDate(Date.valueOf(request.getParameter("date"))));
+			}
+			if(!request.getParameter("confort").equals("-")){
+				voyages.addAll(voyageDao.getVoyageByConfort(Confort.valueOf(request.getParameter("confort"))));
+			}
+			if(!request.getParameter("dure").equals("-")){
+				voyages.addAll(voyageDao.getVoyageByDure(Dure.valueOf(request.getParameter("dure"))));
+			}
+			if(!request.getParameter("difficulte").equals("-")){
+				voyages.addAll(voyageDao.getVoyageByDifficulte(Difficulte.valueOf(request.getParameter("difficulte"))));
+			}
+			if(!request.getParameter("prix").equals("-")){
+				if(request.getParameter("prix").equals("1")) {
+					voyages.addAll(voyageDao.getVoyageByPrix(1000,2500));
+				}else
+				if(request.getParameter("prix").equals("2")) {
+					voyages.addAll(voyageDao.getVoyageByPrix(2500,4000));
+				}else
+				if(request.getParameter("prix").equals("3")) {
+					voyages.addAll(voyageDao.getVoyageByPrix(4000,6000));
+				}else
+				if(request.getParameter("prix").equals("4")) {
+					voyages.addAll(voyageDao.getVoyageByPrix(6000,8000));
+				}
+				
+				
+			}
+			request.setAttribute("voyages",removeDuplicates(voyages));
+			request.getRequestDispatcher("/voyagesList.jsp").forward(request, response);
+			
 		}
+		
 	}
-
+	// Function to remove duplicates from an ArrayList
+    public static <T> List<T> removeDuplicates(List<T> list)
+    {
+  
+        // Create a new ArrayList
+        List<T> newList = new ArrayList<T>();
+  
+        // Traverse through the first list
+        for (T element : list) {
+  
+            // If this element is not present in newList
+            // then add it
+            if (!newList.contains(element)) {
+  
+                newList.add(element);
+            }
+        }
+  
+        // return the new list
+        return newList;
+    }
 }

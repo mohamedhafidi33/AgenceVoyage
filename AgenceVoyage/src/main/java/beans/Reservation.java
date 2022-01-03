@@ -1,5 +1,7 @@
 package beans;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,9 +28,20 @@ public class Reservation {
 	@JoinColumn(name="Client_id",referencedColumnName="id")
 	private Client client;
 	
+	@Column(name="dateReservation")
+	private Date dateReservation ;
+	
 	@ManyToOne
 	@JoinColumn(name="Voyage_id",referencedColumnName="id")
 	private Voyage voyage;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public Client getClient() {
 		return client;
@@ -38,6 +51,14 @@ public class Reservation {
 		this.client = client;
 	}
 
+	public Date getDateReservation() {
+		return dateReservation;
+	}
+
+	public void setDateReservation(Date dateReservation) {
+		this.dateReservation = dateReservation;
+	}
+
 	public Voyage getVoyage() {
 		return voyage;
 	}
@@ -45,6 +66,8 @@ public class Reservation {
 	public void setVoyage(Voyage voyage) {
 		this.voyage = voyage;
 	}
+
+	
 
 	
 }

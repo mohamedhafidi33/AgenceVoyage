@@ -95,7 +95,7 @@ http://www.templatemo.com/tm-475-holiday
             <c:forEach items="${reservations}" var="reservation">
             <div class="d-sm-flex justify-content-between my-4 pb-4 border-bottom">
                 <div class="media d-block d-sm-flex text-center text-sm-left">
-                    <a class="cart-item-thumb mx-auto mr-sm-4" href="#"><img src="${reservation.voyage.image }" ></a>
+                    <a class="cart-item-thumb mx-auto mr-sm-4" href="#"><img src="displayImage?id=${reservation.voyage.id }" ></a>
                     <div class="media-body pt-3">
                         <h3 class="product-card-title font-weight-semibold border-0 pb-0"><a href="#">${reservation.voyage.nom }</a></h3>
                         <div class="font-size-sm"><span class="text-muted mr-2">Date:</span>${reservation.voyage.dateDepart }</div>
@@ -115,13 +115,13 @@ http://www.templatemo.com/tm-475-holiday
                             <polyline points="1 20 1 14 7 14"></polyline>
                             <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
                         </svg>Update cart</button>
-                    <button class="btn btn-outline-danger btn-sm btn-block mb-2" type="button">
+                    <a class="btn btn-outline-danger btn-sm btn-block mb-2" href="annulerReservation?id=${reservation.id }" type="button">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2 mr-1">
                             <polyline points="3 6 5 6 21 6"></polyline>
                             <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
                             <line x1="10" y1="11" x2="10" y2="17"></line>
                             <line x1="14" y1="11" x2="14" y2="17"></line>
-                        </svg>Remove</button>
+                        </svg>Remove</a>
                 </div>
             </div>
             <!-- Item-->
@@ -130,7 +130,7 @@ http://www.templatemo.com/tm-475-holiday
         <!-- Sidebar-->
         <div class="col-xl-3 col-md-4 pt-3 pt-md-0">
             <h2 class="h6 px-4 py-4 bg-secondary text-center">Subtotal</h2>
-            <div class="h3 font-weight-semibold text-center py-3">$325.00</div>
+            <div class="h3 font-weight-semibold text-center py-3">${amount }</div>
             <hr>
             <h3 class="h6 pt-4 font-weight-semibold"><span class="badge badge-success mr-2">Note</span>Additional comments</h3>
             <textarea class="form-control mb-3" id="order-comments" rows="5"></textarea>

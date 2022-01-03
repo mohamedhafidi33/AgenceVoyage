@@ -43,7 +43,7 @@ http://www.templatemo.com/tm-475-holiday
 			<c:forEach items="${voyages}" var="voyage">
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="tm-tours-box-1">
-						<img src="${voyage.image }" alt="image" class="img-responsive">
+						<img src="displayImage?id=${voyage.id }" width="520" height="300" alt="image" class="img-responsive">
 						<div class="tm-tours-box-1-info">
 							<div class="tm-tours-box-1-info-left">
 								<p class="text-uppercase margin-bottom-20">${voyage.nom }</p>	
@@ -60,7 +60,7 @@ http://www.templatemo.com/tm-475-holiday
 							<a class="tm-tours-box-1-link-right">
 								${voyage.prix }								
 							</a>	
-							<a href="detailVoyage?id=${voyage.id }" class="tm-tours-box-1-link-right">
+							<a href="detailVoyage?id=${voyage.id }" height=100%; width=560px; class="tm-tours-box-1-link-right">
 								reserver								
 							</a>							
 						</div>

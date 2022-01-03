@@ -68,7 +68,8 @@
                     </select>
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control form-control-lg" id="exampleInputPassword1" name="username" placeholder="username">
+                    <input type="text" class="form-control form-control-lg" id="myuser" name="username" placeholder="username">
+                    <span id="result" style="color:red"></span>
                   </div>
                   <div class="form-group">
                     <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" name="password" placeholder="Password">
@@ -103,6 +104,24 @@
     <script src="assets/js/off-canvas.js"></script>
     <script src="assets/js/hoverable-collapse.js"></script>
     <script src="assets/js/misc.js"></script>
+    <script>
+    
+    $(document).ready(function(){
+    	$('#myuser').change(function(){
+    		var myuser = $('#myuser').val();
+    		$.ajax({
+    			type:'POST',
+    			data:{myuser:myuser},
+    			url:'UsernameAvailability',
+    			success: function(result){
+    				$('#result').html(result);
+    			}
+    		});
+    	});
+    });
+    
+    </script>
+    
     <!-- endinject -->
   </body>
 </html>

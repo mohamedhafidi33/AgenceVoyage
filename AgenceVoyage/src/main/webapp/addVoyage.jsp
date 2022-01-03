@@ -127,10 +127,14 @@
                           <input type="text" name="destination" class="form-control" id="exampleInputMobile" placeholder="destination">
                         </div>
                       </div>
+                       <label for="exampleInputMobile" class="col-sm-3 col-form-label">Déscription</label>
+                      <div class="form-group row">
+							<textarea id="contact_message" name="description" class="form-control" rows="6" placeholder="MESSAGE"></textarea>
+						</div>
                       <div class="form-group row">
                         <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Date de départ</label>
                         <div class="col-sm-9">
-                          <input type="date" name="dateDepart" class="form-control" id="exampleInputPassword2" placeholder="date">
+                          <input type="date" min="<%= new java.sql.Date(System.currentTimeMillis()) %>" name="dateDepart" required="required" class="form-control" id="exampleInputPassword2" placeholder="date">
                         </div>
                       </div>
                       <div class="form-group row">
@@ -138,8 +142,9 @@
                         </label>
                         <div class="col-sm-9">
                       <select name="duree" class="form-control" id="exampleFormControlSelect2">
-                        <option>weekend</option>
-                        <option>semaine</option>
+                        <option>Weekend</option>
+                        <option>Semaine</option>
+                        <option>LongSejour</option>
                       </select>
                     </div>
                         </div>
@@ -154,7 +159,7 @@
                        <div class="form-group row">
                         <label for="exampleInputPassword2"  class="col-sm-3 col-form-label">Prix unitaire</label>
                         <div class="col-sm-9">
-                          <input type="text" name="prix" class="form-control" id="exampleInputPassword2" placeholder="prix">
+                          <input type="text" name="prix" required="required" class="form-control" id="exampleInputPassword2" placeholder="prix">
                         </div>
                       </div>
                       <div class="form-group row">
@@ -183,9 +188,9 @@
                       <div class="col-sm-9">
                       <select name="confort" class="form-control" id="exampleFormControlSelect2">
                         <option>Refuge</option>
-                        <option>Standart</option>
-                        <option>Supérieur</option>
-                        <option>Haut de gamme</option>
+                        <option>Standard</option>
+                        <option>Superieur</option>
+                        <option>Haut_gamme</option>
                       </select>
                     </div>
                   </div>
@@ -202,31 +207,84 @@
                   <div class="form-group row">
                       <label for="exampleFormControlSelect2" class="col-sm-3 col-form-label">Hébergement</label>
                       <div class="col-sm-9">
-                      <select name="hebergement" class="form-control" id="exampleFormControlSelect2">
-                        <c:forEach items="${hebergements}" var="heberg">
-  						 <option>${heberg.nom}</option>
-					   </c:forEach>
-                      </select>
+                      <div>
+    <input type="checkbox" id="coding" name="hebergement" value="hotel" checked>
+    <label for="coding">hôtel</label>
+  </div>
+  <div>
+    <input type="checkbox" id="music" name="hebergement" value="hôtel club">
+    <label for="music">hôtel club</label>
+  </div>
+  <div>
+    <input type="checkbox" id="music" name="hebergement" value="résidence de tourisme">
+    <label for="music">résidence de tourisme</label>
+  </div>
+  <div>
+    <input type="checkbox" id="music" name="hebergement" value="maison d hôtes">
+    <label for="music">maison d hôtes</label>
+  </div>
+  <div>
+    <input type="checkbox" id="music" name="hebergement" value="riad">
+    <label for="music">riad</label>
+  </div>
+  <div>
+    <input type="checkbox" id="music" name="hebergement" value="kasbah">
+    <label for="music">kasbah</label>
+  </div>
                     </div>
                   </div>
                   <div class="form-group row">
                       <label for="exampleFormControlSelect2" class="col-sm-3 col-form-label">Activité</label>
                       <div class="col-sm-9">
-                      <select name="activite" class="form-control" id="exampleFormControlSelect2">
-                        <c:forEach  items="${activites}" var="activit">
-  						 <option>${activit.nom} </option>
-					   </c:forEach>
-                      </select>
+                      <div>
+    <input type="checkbox" id="music" name="activite" value="photographie">
+    <label for="music">photographie</label>
+  </div>
+  <div>
+    <input type="checkbox" id="music" name="activite" value="chebal">
+    <label for="music">cheval</label>
+  </div>
+  <div>
+    <input type="checkbox" id="music" name="activite" value="Vélo">
+    <label for="music">Vélo</label>
+  </div>
+  <div>
+    <input type="checkbox" id="music" name="activite" value="Randonnée">
+    <label for="music">Randonnée</label>
+  </div>
+  <div>
+    <input type="checkbox" id="music" name="activite" value="Ski">
+    <label for="music">Ski</label>
+  </div>
+  <div>
+    <input type="checkbox" id="music" name="activite" value="Safari">
+    <label for="music">Safari</label>
+  </div>
                     </div>
                   </div>
                   <div class="form-group row">
                       <label for="exampleFormControlSelect2" class="col-sm-3 col-form-label">Transport</label>
                       <div class="col-sm-9">
-                      <select name="transport" class="form-control" id="exampleFormControlSelect2" multiple>
-                       <c:forEach items="${transports}" var="transport">
-  						 <option>${transport.nom} </option>
-					   </c:forEach>
-                      </select>
+                      <div>
+    <input type="checkbox" id="music" name="transport" value="Véhicule">
+    <label for="music">Véhicule</label>
+  </div>
+   <div>
+    <input type="checkbox" id="music" name="transport" value="Véhicule Privaisé">
+    <label for="music">Véhicule Privatisé</label>
+  </div>
+   <div>
+    <input type="checkbox" id="music" name="transport" value="Avion">
+    <label for="music">Avion</label>
+  </div>
+   <div>
+    <input type="checkbox" id="music" name="transport" value="Train">
+    <label for="music">Train</label>
+  </div>
+   <div>
+    <input type="checkbox" id="music" name="transport" value="Bus">
+    <label for="music">Bus</label>
+  </div>
                     </div>
                   </div>
 
