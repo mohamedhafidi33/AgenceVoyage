@@ -55,10 +55,10 @@ http://www.templatemo.com/tm-475-holiday
 					<li>
 						<img src="img/world-map.png" alt="image" class="contact-image" />
 						<div class="contact-text">
-							<h2 class="slider-title">Exemple</h2>
-							<h3 class="slider-subtitle">hafidi </h3>
-							<p class="slider-description">Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. <br><br>
-                            Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris gestas quam, ut aliquam massa nisi.</p>
+							<h2 class="slider-title">Qui sommes nous?</h2>
+							<h3 class="slider-subtitle">Let's Travel Company</h3>
+							<p class="slider-description">Leader du voyage à pied depuis plus de 40 ans, réputé pour son savoir-faire et sa connaissance de la randonnée pour chaque destination, Terres d'Aventure fait marcher des milliers de voyageurs chaque année à travers 1600 voyages <br><br>
+                            </p>
 							<div class="slider-social">
 								<a href="#" class="tm-social-icon"><i class="fa fa-twitter"></i></a>
 								<a href="#" class="tm-social-icon"><i class="fa fa-facebook"></i></a>
@@ -98,12 +98,6 @@ http://www.templatemo.com/tm-475-holiday
 					<div class="col-lg-6 col-md-6 tm-contact-form-input">
 						<div class="form-group">
 							<input type="text" name="name" id="contact_name" class="form-control" placeholder="NAME" />
-						</div>
-						<div class="form-group">
-							<input type="email" name="email" id="contact_email" class="form-control" placeholder="EMAIL" />
-						</div>
-						<div class="form-group">
-							<input type="password" name="password" id="contact_subject" class="form-control" placeholder="MOT DE PASSE" />
 						</div>
 						<div class="form-group">
 							<input type="text" name="subject" id="contact_subject" class="form-control" placeholder="SUBJECT" />

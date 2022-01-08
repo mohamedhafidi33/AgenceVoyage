@@ -127,9 +127,11 @@
                           <input type="text" name="destination" class="form-control" id="exampleInputMobile" placeholder="destination">
                         </div>
                       </div>
+                      <div class="form-group row">
                        <label for="exampleInputMobile" class="col-sm-3 col-form-label">Déscription</label>
                       <div class="form-group row">
-							<textarea id="contact_message" name="description" class="form-control" rows="6" placeholder="MESSAGE"></textarea>
+							<input id="contact_message" name="description" class="form-control" rows="6" placeholder="Déscription"></input>
+						</div>
 						</div>
                       <div class="form-group row">
                         <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Date de départ</label>
@@ -179,7 +181,7 @@
                       <select name="typeVoyage" class="form-control" id="exampleFormControlSelect2">
                         <option>Famille</option>
                         <option>Individuel</option>
-                        <option>CircuitAccompane</option>
+                        <option>CircuitAccompagne</option>
                       </select>
                     </div>
                   </div>

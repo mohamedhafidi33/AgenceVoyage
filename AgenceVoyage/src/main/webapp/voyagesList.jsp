@@ -35,7 +35,8 @@ http://www.templatemo.com/tm-475-holiday
 			<div class="row">				
 				<div class="tm-section-header">
 					<div class="col-lg-3 col-md-3 col-sm-3"><hr></div>
-					<div class="col-lg-6 col-md-6 col-sm-6"><h2 class="tm-section-title">Our Tours</h2></div>
+					<div class="col-lg-6 col-md-6 col-sm-6"><h3 class="tm-section-title">Our Tours</h3></div>
+					<p style="color:red"><c:out value="${NoTrip }"></c:out></p>
 					<div class="col-lg-3 col-md-3 col-sm-3"><hr></div>	
 				</div>
 			</div>
@@ -82,9 +83,10 @@ http://www.templatemo.com/tm-475-holiday
 				</div>				
 			</div>
 			<div class="row">
+			<c:forEach items="${PopVoyages}" var="voyage">
 				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-xxs-12">
 					<div class="tm-tours-box-2">						
-						<img src="img/index-03.jpg" alt="image" class="img-responsive">
+						<img src="displayImage?id=${voyage.id }" alt="image" class="img-responsive">
 						<div class="tm-tours-box-2-info">
 							<h3 class="margin-bottom-15">Proin Gravida Nibhvel Lorem Quis Bind</h3>
 							<img src="img/rating.png" alt="image" class="margin-bottom-5">
@@ -93,39 +95,7 @@ http://www.templatemo.com/tm-475-holiday
 						<a href="#" class="tm-tours-box-2-link">Book Now</a>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-xxs-12">
-					<div class="tm-tours-box-2">						
-						<img src="img/index-04.jpg" alt="image" class="img-responsive">
-						<div class="tm-tours-box-2-info">
-							<h3 class="margin-bottom-15">Proin Gravida Nibhvel Lorem Quis Bind</h3>
-							<img src="img/rating.png" alt="image" class="margin-bottom-5">
-							<p>26 March 2084</p>	
-						</div>						
-						<a href="#" class="tm-tours-box-2-link">Book Now</a>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-xxs-12">
-					<div class="tm-tours-box-2">						
-						<img src="img/index-05.jpg" alt="image" class="img-responsive">
-						<div class="tm-tours-box-2-info">
-							<h3 class="margin-bottom-15">Proin Gravida Nibhvel Lorem Quis Bind</h3>
-							<img src="img/rating.png" alt="image" class="margin-bottom-5">
-							<p>24 March 2084</p>	
-						</div>						
-						<a href="#" class="tm-tours-box-2-link">Book Now</a>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-xxs-12">
-					<div class="tm-tours-box-2">						
-						<img src="img/index-06.jpg" alt="image" class="img-responsive">
-						<div class="tm-tours-box-2-info">
-							<h3 class="margin-bottom-15">Proin Gravida Nibhvel Lorem Quis Bind</h3>
-							<img src="img/rating.png" alt="image" class="margin-bottom-5">
-							<p>22 March 2084</p>	
-						</div>						
-						<a href="#" class="tm-tours-box-2-link">Book Now</a>
-					</div>
-				</div>
+				</c:forEach>
 			</div>
 			<div class="row">
 				<div class="col-lg-12">

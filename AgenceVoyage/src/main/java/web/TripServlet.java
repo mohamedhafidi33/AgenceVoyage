@@ -130,6 +130,9 @@ public class TripServlet extends HttpServlet {
 		}
 		if(request.getServletPath().equals("/listVoyages")) {
 			List<Voyage> voyages=voyageDao.listVoyages();
+			if(voyageDao.listVoyages().size()>=4) {
+				for(int i=0;i<4;i++) {voyages.add(voyageDao.listVoyages().get(i));}
+				request.setAttribute("PopVoyages",voyages);}
 //			
 //			Map<Voyage,byte[]> trips=new HashMap<Voyage,byte[]>();
 //			for(Voyage voyage:voyages) {
@@ -189,6 +192,7 @@ public class TripServlet extends HttpServlet {
 			voyage.setDure(Dure.valueOf(request.getParameter("duree")));
 			voyage.setTheme(Theme.valueOf(request.getParameter("theme")));
 			voyage.setNom(request.getParameter("nom"));
+			voyage.setDepart(request.getParameter("depart"));
 			final Part filePart =request.getPart("image");
 			if (filePart != null) {
 				System.out.println(filePart.getName());
@@ -315,7 +319,11 @@ public class TripServlet extends HttpServlet {
 				
 				
 			}
-			request.setAttribute("voyages",removeDuplicates(voyages));
+			List<Voyage> finalList=removeDuplicates(voyages);
+			if(finalList.isEmpty()) {
+				request.setAttribute("NoTrip","Il n'y a aucun voyage avec ces critères");
+			}
+			request.setAttribute("voyages",finalList);
 			request.getRequestDispatcher("/voyagesList.jsp").forward(request, response);
 			
 		}

@@ -61,25 +61,32 @@ public class LoginServlet extends HttpServlet {
 			
 			List<Voyage> voyages1=new ArrayList<Voyage>();
 			if(voyageDao.listVoyages().size()>=2) {
-			for(int i=0;i<2;i++) {voyages1.add(voyageDao.listVoyages().get(i));}
+			for(int i=0;i<=1;i++) {voyages1.add(voyageDao.listVoyages().get(i));}
 			request.setAttribute("randVoyages",voyages1);
 			}
 			List<Voyage> voyages2=new ArrayList<Voyage>();
 			if(voyageDao.listVoyages().size()>=4) {
-			for(int i=0;i<4;i++) {voyages2.add(voyageDao.listVoyages().get(i));}
+			for(int i=0;i<=1;i++) {voyages2.add(voyageDao.listVoyages().get(i));}
 			request.setAttribute("PopVoyages",voyages2);}
 			
 			request.getRequestDispatcher("/homeClient.jsp").forward(request, response);
 		}
 		if (request.getServletPath().equals("/HomeAdmin")) {
-			
+
+			request.setAttribute("countVoyages",voyageDao.countVoyage());
+			request.setAttribute("countClients",clientDao.countClients());
+			request.setAttribute("countReservations",reservationDao.countReservation());
 			request.getRequestDispatcher("/homeAdmin.jsp").forward(request, response);
 		}
 	if (request.getServletPath().equals("/MainHome")) {
 	voyageDao.deleteExpiredVoyages();
 	List<Voyage> voyages=new ArrayList<Voyage>();
-	for(int i=0;i<2;i++) {voyages.add(voyageDao.listVoyages().get(i));}
+	for(int i=0;i<=1;i++) {voyages.add(voyageDao.listVoyages().get(i));}
 	request.setAttribute("randVoyages",voyages);
+	List<Voyage> voyages2=new ArrayList<Voyage>();
+	if(voyageDao.listVoyages().size()>=4) {
+	for(int i=0;i<=1;i++) {voyages2.add(voyageDao.listVoyages().get(i));}
+	request.setAttribute("PopVoyages",voyages2);}
 	request.getRequestDispatcher("/mainHome.jsp").forward(request, response);
 }
 if (request.getServletPath().equals("/logout")) {
@@ -130,6 +137,7 @@ if (request.getServletPath().equals("/logout")) {
 						user.setId(userDao.getId(user));
 						session.setAttribute("client", clientDao.getClientByUser(user));
 						request.setAttribute("count", reservationDao.countReservationByClient(clientDao.getClientByUser(user)));
+						
 						response.sendRedirect("/AgenceVoyage/HomeClient");
 					}
 				}

@@ -40,6 +40,9 @@ public class Voyage {
 	@Column(name="prix")
 	private double prix;
 	
+	@Column(name="depart")
+	private String depart;
+	
 	@Lob
 	@Column(name="image")
 	private Blob image;
@@ -205,6 +208,14 @@ public class Voyage {
 
 	public void setTransports(List<Transport> transports) {
 		this.transports = transports;
+	}
+
+	public String getDepart() {
+		return depart;
+	}
+
+	public void setDepart(String depart) {
+		this.depart = depart;
 	}
 
 	

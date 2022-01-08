@@ -19,6 +19,7 @@ import beans.TypeVoyage;
 import beans.Voyage;
 
 public class VoyageDao {
+	ReservationDao resDao=new ReservationDao();
 	private static Session session = HibernateUtil.getSessionFactory().openSession();
 	public void saveVoyage(Voyage v) {
 		session.beginTransaction();
@@ -51,6 +52,7 @@ public class VoyageDao {
 		for(Voyage item:listVoyages) {
 			if(item.getDateDepart().before(new java.sql.Date(System.currentTimeMillis()))) {
 				deleteVoyage(item.getId());
+				resDao.deleteReservation(resDao.getReservationByVoyage(item).getId());
 			}
 		}
 	}

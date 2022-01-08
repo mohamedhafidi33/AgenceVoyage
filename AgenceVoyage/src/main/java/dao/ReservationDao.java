@@ -8,6 +8,7 @@ import org.hibernate.Session;
 
 import beans.Client;
 import beans.Reservation;
+import beans.Voyage;
 import beans.Reservation;
 import beans.Reservation;
 
@@ -29,6 +30,12 @@ private static Session session = HibernateUtil.getSessionFactory().openSession()
 		Reservation v = session.find(Reservation.class, id);
 		if(v==null)throw new RuntimeException("Reservation introuvable");
 		return v ;
+	}
+	public Reservation getReservationByVoyage(Voyage v) {
+		Query req = session.createQuery("select r from Reservation r where r.voyage like :x");
+		req.setParameter("x",v);
+		List<Reservation> reservations=req.getResultList();
+		return reservations.get(0);
 	}
 	public void deleteReservation(int id) {
 		Reservation r = getReservation(id);

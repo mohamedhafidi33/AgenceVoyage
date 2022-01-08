@@ -81,7 +81,7 @@
                         <tr>
                           <td>${voyage.nom}</td>
                           <td>${voyage.prix }</td>
-                          <td>${voyage.dateDepart }<i class="mdi mdi-arrow-up"></i></td>
+                          <td>${voyage.depart }<i class="mdi mdi-arrow-up"></i></td>
                           <td>${voyage.destination }<i class="mdi mdi-arrow-down"></i></td>
                           <td><label class="badge badge-danger">${voyage.difficulte }</label></td>
                           <td>${voyage.dure }</td>
@@ -90,7 +90,7 @@
 													href="editVoyagePage?id=${voyage.id }">
 														<i class="fas fa-pencil-alt"> </i> Modifier
 												</a> <a class="btn btn-danger btn-sm"
-													href="deleteVoyage?id=${voyage.id }">
+													href="deleteVoyage?id=${voyage.id }" onclick="return confirm('Êtes-vous sûr de bien vouloir supprimer cet élément?');" >
 														<i class="fas fa-trash"> </i> Delete
 												</a></td>
                         </tr>

@@ -36,9 +36,9 @@ http://www.templatemo.com/tm-475-holiday
 		<div class="flexslider flexslider-banner">
 		  <ul class="slides">
 		    <li>
-			    <div class="tm-banner-inner">
-					<h1 class="tm-banner-title">Find <span class="tm-yellow-text">The Best</span> Place</h1>
-					<p class="tm-banner-subtitle">For Your Holidays</p>
+			    <div class="tm-banner-inner">  
+					<h1 class="tm-banner-title">Trouvez <span class="tm-yellow-text">les meilleurs</span>endroits</h1>
+					<p class="tm-banner-subtitle">pour vos vacances</p>
 					<a href="listVoyages" class="tm-banner-link">Nos voyages</a>	
 				</div>
 				<img src="img/banner-1.jpg" alt="Image" />	
@@ -47,7 +47,7 @@ http://www.templatemo.com/tm-475-holiday
 			    <div class="tm-banner-inner">
 					<h1 class="tm-banner-title">Lorem <span class="tm-yellow-text">Ipsum</span> Dolor</h1>
 					<p class="tm-banner-subtitle">Wonderful Destinations</p>
-					<a href="voyages.html" class="tm-banner-link">Nos voyages</a>	
+					<a href="listVoyages" class="tm-banner-link">Nos voyages</a>	
 				</div>
 		      <img src="img/banner-2.jpg" alt="Image" />
 		    </li>
@@ -55,7 +55,7 @@ http://www.templatemo.com/tm-475-holiday
 			    <div class="tm-banner-inner">
 					<h1 class="tm-banner-title">Proin <span class="tm-yellow-text">Gravida</span> Nibhvell</h1>
 					<p class="tm-banner-subtitle">Velit Auctor</p>
-					<a href="voyages.html" class="tm-banner-link">Nos voyages</a>	
+					<a href="listVoyages" class="tm-banner-link">Nos voyages</a>	
 				</div>
 		      <img src="img/banner-3.jpg" alt="Image" />
 		    </li>
@@ -89,9 +89,10 @@ http://www.templatemo.com/tm-475-holiday
 							            	 <select name="destination" class="form-control">
 							            	 	<option value="-">-- Déstination -- </option>
 							            	 	<option value="dakhla">dakhla</option>
-												<option value="chatrium">Chatrium</option>
-												<option value="fourseasons">Four Seasons</option>
-												<option value="hilton">Hilton</option>
+												<option value="agadir">agadir</option>
+												<option value="Salé">Salé</option>
+												<option value="Ifrane">Ifrane</option>
+												<option value="Marrakech">Marrakech</option>
 											</select> 
 							          	</div>
 							          	<div class="form-group">
@@ -157,14 +158,14 @@ http://www.templatemo.com/tm-475-holiday
 												<option value="CircuitAccompagne">CircuitAccompagne</option>
 											</select> 
 							          	</div>
-							            <div class="form-group">
-							            	 <select class="form-control">
-							            	 	<option value="">-- Options -- </option>
-							            	 	<option value="">Child Seat</option>
-												<option value="">GPS Navigator</option>
-												<option value="">Insurance</option>
-											</select> 
-							          	</div>	
+<!-- 							            <div class="form-group"> -->
+<!-- 							            	 <select class="form-control"> -->
+<!-- 							            	 	<option value="">-- Options -- </option> -->
+<!-- 							            	 	<option value="">Child Seat</option> -->
+<!-- 												<option value="">GPS Navigator</option> -->
+<!-- 												<option value="">Insurance</option> -->
+<!-- 											</select>  -->
+<!-- 							          	</div>	 -->
 							          	<div class="form-group">
 							                <select name="prix" class="form-control">
 							            	 	<option value="-">-- Prix -- </option>
@@ -226,7 +227,7 @@ http://www.templatemo.com/tm-475-holiday
 			
 			<div class="row">
 				<div class="col-lg-12">
-					<p class="home-description">Holiday is free Bootstrap v3.3.5 responsive template for tour and travel websites. You can download and use this layout for any purpose. You do not need to provide a credit link to us. If you have any question, feel free to <a href="http://www.facebook.com/templatemo" target="_parent">contact us</a>. Credit goes to <a rel="nofollow" href="http://unsplash.com" target="_parent">Unspash</a> for images used in this template.</p>					
+					<p class="home-description">Let's Travel <a href="http://www.facebook.com/templatemo" target="_parent">contact us</a>. Credit goes to <a rel="nofollow" href="http://unsplash.com" target="_parent">Unspash</a> for images used in this template.</p>					
 				</div>
 			</div>			
 		</div>
@@ -264,7 +265,7 @@ http://www.templatemo.com/tm-475-holiday
 	<footer class="tm-black-bg">
 		<div class="container">
 			<div class="row">
-				<p class="tm-copyright-text">Copyright &copy; 2084 Your Company Name</p>
+				<p class="tm-copyright-text">Copyright &copy; Let's Travel Company</p>
 			</div>
 		</div>		
 	</footer>

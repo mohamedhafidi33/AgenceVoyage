@@ -172,7 +172,7 @@ if (session.getAttribute("admin") == null) {
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="homeAdmin.jsp">
+              <a class="nav-link" href="HomeAdmin">
                 <span class="menu-title">Home</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
