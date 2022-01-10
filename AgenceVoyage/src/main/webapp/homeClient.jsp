@@ -38,7 +38,7 @@ http://www.templatemo.com/tm-475-holiday
 		    <li>
 			    <div class="tm-banner-inner">  
 					<h1 class="tm-banner-title">Trouvez <span class="tm-yellow-text">les meilleurs</span>endroits</h1>
-					<p class="tm-banner-subtitle">pour vos vacances</p>
+					<p class="tm-banner-subtitle">Cher ${client.nom }</p>
 					<a href="listVoyages" class="tm-banner-link">Nos voyages</a>	
 				</div>
 				<img src="img/banner-1.jpg" alt="Image" />	
@@ -46,7 +46,7 @@ http://www.templatemo.com/tm-475-holiday
 		    <li>
 			    <div class="tm-banner-inner">
 					<h1 class="tm-banner-title">Lorem <span class="tm-yellow-text">Ipsum</span> Dolor</h1>
-					<p class="tm-banner-subtitle">Wonderful Destinations</p>
+					<p class="tm-banner-subtitle">Cher ${client.nom }</p>
 					<a href="listVoyages" class="tm-banner-link">Nos voyages</a>	
 				</div>
 		      <img src="img/banner-2.jpg" alt="Image" />
@@ -54,7 +54,7 @@ http://www.templatemo.com/tm-475-holiday
 		    <li>
 			    <div class="tm-banner-inner">
 					<h1 class="tm-banner-title">Proin <span class="tm-yellow-text">Gravida</span> Nibhvell</h1>
-					<p class="tm-banner-subtitle">Velit Auctor</p>
+					<p class="tm-banner-subtitle">Cher ${client.nom }</p>
 					<a href="listVoyages" class="tm-banner-link">Nos voyages</a>	
 				</div>
 		      <img src="img/banner-3.jpg" alt="Image" />
@@ -119,7 +119,7 @@ http://www.templatemo.com/tm-475-holiday
 							            	 	<option value="-">-- Durée -- </option>
 							            	 	<option value="Weekend">Weekend</option>
 												<option value="Semaine">Semaine</option>
-												<option value="LongSejeur">LongSejour</option>
+												<option value="LongSejour">LongSejour</option>
 											</select> 
 							            </div>
 									</div>							
@@ -218,7 +218,7 @@ http://www.templatemo.com/tm-475-holiday
 						<p class="tm-date">${voyage.dateDepart }</p>
 						<div class="tm-home-box-2-container">
 							<a href="#" class="tm-home-box-2-link"><i class="fa fa-heart tm-home-box-2-icon border-right"></i></a>
-							<a href="#" class="tm-home-box-2-link"><span class="tm-home-box-2-description">${voyage.destination }</span></a>
+							<a href="detailVoyage?id=${voyage.id }" class="tm-home-box-2-link"><span class="tm-home-box-2-description">${voyage.destination }</span></a>
 							<a href="#" class="tm-home-box-2-link"><i class="fa fa-edit tm-home-box-2-icon border-left"></i></a>
 						</div>
 					</div>
@@ -234,34 +234,7 @@ http://www.templatemo.com/tm-475-holiday
 	</section>		
 	
 	<!-- white bg -->
-	<section class="tm-white-bg section-padding-bottom">
-		<div class="container">
-			<div class="row">
-				<div class="tm-section-header section-margin-top">
-					<div class="col-lg-4 col-md-3 col-sm-3"><hr></div>
-					<div class="col-lg-4 col-md-6 col-sm-6"><h2 class="tm-section-title">Voyages populaires</h2></div>
-					<div class="col-lg-4 col-md-3 col-sm-3"><hr></div>	
-				</div>
-				<c:forEach items="${PopVoyages}" var="voyage">
-				<div class="col-lg-6">
-					<div class="tm-home-box-3">
-						<div class="tm-home-box-3-img-container">
-							<img src="displayImage?id=${voyage.id }" height="800;" width="200;" alt="image" class="img-responsive">	
-						</div>						
-						<div class="tm-home-box-3-info">
-							<p class="tm-home-box-3-description">${voyage.description }</p>
-					        <div class="tm-home-box-2-container">
-							<a href="#" class="tm-home-box-2-link"><i class="fa fa-heart tm-home-box-2-icon border-right"></i></a>
-							<a href="#" class="tm-home-box-2-link"><span class="tm-home-box-2-description box-3">Travel</span></a>
-							<a href="#" class="tm-home-box-2-link"><i class="fa fa-edit tm-home-box-2-icon border-left"></i></a>
-						</div>
-						</div>						
-					</div>					
-			     </div>
-			     </c:forEach>
-			</div>		
-		</div>
-	</section>
+	
 	<footer class="tm-black-bg">
 		<div class="container">
 			<div class="row">

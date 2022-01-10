@@ -28,6 +28,7 @@ public class TestConnexion {
     {
 //    	ClientDao clientService=new ClientDao();
     	VoyageDao voyageDao=new VoyageDao();
+    	ActiviteDao activiteDao = new ActiviteDao();
 //    	UserDao usrdao=new UserDao();
 //    	ReservationDao dao=new ReservationDao();
     	 Session session = HibernateUtil.getSessionFactory().openSession();
@@ -64,7 +65,7 @@ public class TestConnexion {
 //         hebergement.setVoyage(voyage);
 //         voyage.setHebergements(hebergements);
         // voyageDao.deleteExpiredVoyages();
-        System.out.println(voyageDao.getVoyageByPrix(100, 300).get(0).getDateDepart());
+        System.out.println(activiteDao.activitesByVoyage(voyageDao.getVoyage(3)).get(0).getNom());
          //clientService.saveClient(client);
          //usrdao.updateUser(user);
          //clientService.deleteClient(1);

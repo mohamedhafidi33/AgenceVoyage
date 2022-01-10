@@ -41,12 +41,9 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Basic Tables </h3>
+              <h3 class="page-title"> List des Voyages  </h3>
               <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Basic tables</li>
-                </ol>
+                
               </nav>
             </div>
             <div class="row">
@@ -83,7 +80,7 @@
                           <td>${voyage.prix }</td>
                           <td>${voyage.depart }<i class="mdi mdi-arrow-up"></i></td>
                           <td>${voyage.destination }<i class="mdi mdi-arrow-down"></i></td>
-                          <td><label class="badge badge-danger">${voyage.difficulte }</label></td>
+                          <td><label class="badge">${voyage.difficulte }</label></td>
                           <td>${voyage.dure }</td>
                           <td>${voyage.typeVoyage }</td>
                           <td><a class="btn btn-info btn-sm"

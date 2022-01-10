@@ -36,29 +36,7 @@ http://www.templatemo.com/tm-475-holiday
   </head>
   <body class="tm-gray-bg">
   	<!-- Header -->
-  	<div class="tm-header">
-  		<div class="container">
-  			<div class="row">
-  				<div class="col-lg-6 col-md-4 col-sm-3 tm-site-name-container">
-  					<a href="#" class="tm-site-name">Holiday</a>	
-  				</div>
-	  			<div class="col-lg-6 col-md-8 col-sm-9">
-	  				<div class="mobile-menu-icon">
-		              <i class="fa fa-bars"></i>
-		            </div>
-	  				<nav class="tm-nav">
-						<ul>
-							<li><a href="index.html" class="active">Home</a></li>
-							<li><a href="loginPage">Login</a></li>
-							<li><a href="registerPage">Register</a></li>
-							
-							<li><a href="contact.html">Contact</a></li>
-						</ul>
-					</nav>		
-	  			</div>				
-  			</div>
-  		</div>	  	
-  	</div>
+  	<%@include file="userHeader.jsp"%>
 	
 	<!-- Banner -->
 	<section class="tm-banner">
@@ -98,10 +76,6 @@ http://www.templatemo.com/tm-475-holiday
 		<div class="row">
 			<div class="col-lg-4 col-md-4 col-sm-6">
 				<!-- Nav tabs -->
-				<div class="tm-home-box-1">
-					
-
-					<!-- Tab panes -->
 					<div class="tm-home-box-1">
 					<ul class="nav nav-tabs tm-white-bg" role="tablist" id="hotelCarTabs">
 					    <li role="presentation" class="active">
@@ -123,9 +97,10 @@ http://www.templatemo.com/tm-475-holiday
 							            	 <select name="destination" class="form-control">
 							            	 	<option value="-">-- Déstination -- </option>
 							            	 	<option value="dakhla">dakhla</option>
-												<option value="chatrium">Chatrium</option>
-												<option value="fourseasons">Four Seasons</option>
-												<option value="hilton">Hilton</option>
+												<option value="agadir">agadir</option>
+												<option value="Salé">Salé</option>
+												<option value="Ifrane">Ifrane</option>
+												<option value="Marrakech">Marrakech</option>
 											</select> 
 							          	</div>
 							          	<div class="form-group">
@@ -152,7 +127,7 @@ http://www.templatemo.com/tm-475-holiday
 							            	 	<option value="-">-- Durée -- </option>
 							            	 	<option value="Weekend">Weekend</option>
 												<option value="Semaine">Semaine</option>
-												<option value="LongSejeur">LongSejour</option>
+												<option value="LongSejour">LongSejour</option>
 											</select> 
 							            </div>
 									</div>							
@@ -191,14 +166,14 @@ http://www.templatemo.com/tm-475-holiday
 												<option value="CircuitAccompagne">CircuitAccompagne</option>
 											</select> 
 							          	</div>
-							            <div class="form-group">
-							            	 <select class="form-control">
-							            	 	<option value="">-- Options -- </option>
-							            	 	<option value="">Child Seat</option>
-												<option value="">GPS Navigator</option>
-												<option value="">Insurance</option>
-											</select> 
-							          	</div>	
+<!-- 							            <div class="form-group"> -->
+<!-- 							            	 <select class="form-control"> -->
+<!-- 							            	 	<option value="">-- Options -- </option> -->
+<!-- 							            	 	<option value="">Child Seat</option> -->
+<!-- 												<option value="">GPS Navigator</option> -->
+<!-- 												<option value="">Insurance</option> -->
+<!-- 											</select>  -->
+<!-- 							          	</div>	 -->
 							          	<div class="form-group">
 							                <select name="prix" class="form-control">
 							            	 	<option value="-">-- Prix -- </option>
@@ -216,7 +191,6 @@ http://www.templatemo.com/tm-475-holiday
 					    </div>				    
 					</div>
 					</form>
-				</div>			
 				</div>								
 			</div>
 
@@ -268,34 +242,7 @@ http://www.templatemo.com/tm-475-holiday
 		</div>
 	</section>	
 	<!-- white bg -->
-	<section class="tm-white-bg section-padding-bottom">
-		<div class="container">
-			<div class="row">
-				<div class="tm-section-header section-margin-top">
-					<div class="col-lg-4 col-md-3 col-sm-3"><hr></div>
-					<div class="col-lg-4 col-md-6 col-sm-6"><h2 class="tm-section-title">Popular Packages</h2></div>
-					<div class="col-lg-4 col-md-3 col-sm-3"><hr></div>	
-				</div>
-				<c:forEach items="${PopVoyages}" var="voyage">
-				<div class="col-lg-6">
-					<div class="tm-home-box-3">
-						<div class="tm-home-box-3-img-container">
-							<img src="displayImage?id=${voyage.id }" height="800;" width="200;" alt="image" class="img-responsive">	
-						</div>						
-						<div class="tm-home-box-3-info">
-							<p class="tm-home-box-3-description">${voyage.description }</p>
-					        <div class="tm-home-box-2-container">
-							<a href="#" class="tm-home-box-2-link"><i class="fa fa-heart tm-home-box-2-icon border-right"></i></a>
-							<a href="#" class="tm-home-box-2-link"><span class="tm-home-box-2-description box-3">Travel</span></a>
-							<a href="#" class="tm-home-box-2-link"><i class="fa fa-edit tm-home-box-2-icon border-left"></i></a>
-						</div>
-						</div>						
-					</div>					
-			     </div>
-			     </c:forEach>
-			</div>		
-		</div>
-	</section>
+	
 	<footer class="tm-black-bg">
 		<div class="container">
 			<div class="row">

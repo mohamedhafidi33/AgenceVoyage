@@ -34,12 +34,9 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Basic Tables </h3>
+              <h3 class="page-title"> Liste des Réservations </h3>
               <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Basic tables</li>
-                </ol>
+                
               </nav>
             </div>
             <div class="row">
@@ -77,7 +74,7 @@
                           <td> ${reservation.voyage.dateDepart} </td>
                           <td>
 												</a> <a class="btn btn-danger btn-sm"
-													href="cancelReservation?id=${reservation.id }">
+													href="cancelReservation?id=${reservation.id }" onclick="return confirm('Êtes-vous sûr de bien vouloir annuler cette reservation?');" >
 														<i class="fas fa-trash"> </i> Annuler
 												</a></td>
 												
@@ -97,8 +94,8 @@
           <!-- partial:../../partials/_footer.html -->
           <footer class="footer">
             <div class="container-fluid clearfix">
-              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
-              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates </a> from Bootstrapdash.com</span>
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Let's Travel company</span>
+              
             </div>
           </footer>
           <!-- partial -->

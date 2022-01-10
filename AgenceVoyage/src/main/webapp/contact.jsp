@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +29,14 @@ http://www.templatemo.com/tm-475-holiday
 </head>
 <body>
 	<!-- Header -->
-	<%@include file="headerClient.jsp"%>
+	<c:choose>
+  <c:when test="${client!=null }">
+  	<%@include file="headerClient.jsp"%>
+  	</c:when>
+  	<c:otherwise>
+  	<%@include file="userHeader.jsp"%>
+  	</c:otherwise>
+  	</c:choose>
 	<!-- Banner -->
 	<section class="tm-banner">
 		<!-- Flexslider -->
@@ -116,7 +124,7 @@ http://www.templatemo.com/tm-475-holiday
 	<footer class="tm-black-bg">
 		<div class="container">
 			<div class="row">
-				<p class="tm-copyright-text">Copyright &copy; 2084 Your Company Name</p>
+				<p class="tm-copyright-text">Copyright &copy; Let's travel Company</p>
 			</div>
 		</div>		
 	</footer>

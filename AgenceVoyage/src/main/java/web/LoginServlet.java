@@ -66,7 +66,7 @@ public class LoginServlet extends HttpServlet {
 			}
 			List<Voyage> voyages2=new ArrayList<Voyage>();
 			if(voyageDao.listVoyages().size()>=4) {
-			for(int i=0;i<=1;i++) {voyages2.add(voyageDao.listVoyages().get(i));}
+			for(int i=0;i<=3;i++) {voyages2.add(voyageDao.listVoyages().get(i));}
 			request.setAttribute("PopVoyages",voyages2);}
 			
 			request.getRequestDispatcher("/homeClient.jsp").forward(request, response);
@@ -96,7 +96,7 @@ if (request.getServletPath().equals("/logout")) {
 	session.removeAttribute("client");
 	session.invalidate();
 	System.out.println(99);
-	request.getRequestDispatcher("/login.jsp").forward(request, response);
+	request.getRequestDispatcher("/MainHome").forward(request, response);
 }
 		
 	}

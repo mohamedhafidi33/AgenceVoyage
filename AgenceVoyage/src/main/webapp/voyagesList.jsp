@@ -26,20 +26,37 @@ http://www.templatemo.com/tm-475-holiday
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+<style>
+.position{
+text-align:center
 
+
+}
+</style>
   </head>
   <body class="tm-gray-bg">
+  <c:choose>
+  <c:when test="${client!=null }">
   	<%@include file="headerClient.jsp"%>
-	
+  	</c:when>
+  	<c:otherwise>
+  	<%@include file="userHeader.jsp"%>
+  	</c:otherwise>
+  	</c:choose>
+  	<section class="container tm-home-section-1" id="more">
+		<div class="row">
 		<div class="section-margin-top">
 			<div class="row">				
 				<div class="tm-section-header">
 					<div class="col-lg-3 col-md-3 col-sm-3"><hr></div>
 					<div class="col-lg-6 col-md-6 col-sm-6"><h3 class="tm-section-title">Our Tours</h3></div>
-					<p style="color:red"><c:out value="${NoTrip }"></c:out></p>
+					
 					<div class="col-lg-3 col-md-3 col-sm-3"><hr></div>	
 				</div>
 			</div>
+			<p class="position"  style="color :red; "><b><c:out value="${NoTrip }"></c:out></b></p>
+		
+			
 			<div class="row">
 			<c:forEach items="${voyages}" var="voyage">
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -56,13 +73,11 @@ http://www.templatemo.com/tm-475-holiday
 						</div>
 						<div class="tm-tours-box-1-link">
 							<div class="tm-tours-box-1-link-left">
-								Duration: ${voyage.dure }
+								Durée: ${voyage.dure }   |   Prix: ${voyage.prix }	
 							</div>
-							<a class="tm-tours-box-1-link-right">
-								${voyage.prix }								
-							</a>	
-							<a href="detailVoyage?id=${voyage.id }" height=100%; width=560px; class="tm-tours-box-1-link-right">
-								reserver								
+								
+						 <a href="detailVoyage?id=${voyage.id }" class="tm-tours-box-1-link-right">
+								reserver							
 							</a>							
 						</div>
 					</div>					
@@ -88,11 +103,11 @@ http://www.templatemo.com/tm-475-holiday
 					<div class="tm-tours-box-2">						
 						<img src="displayImage?id=${voyage.id }" alt="image" class="img-responsive">
 						<div class="tm-tours-box-2-info">
-							<h3 class="margin-bottom-15">Proin Gravida Nibhvel Lorem Quis Bind</h3>
+							<h3 class="margin-bottom-15">${voyage.nom }</h3>
 							<img src="img/rating.png" alt="image" class="margin-bottom-5">
-							<p>28 March 2084</p>	
+							<p>${voyage.dateDepart }</p>	
 						</div>						
-						<a href="#" class="tm-tours-box-2-link">Book Now</a>
+						<a href="detailVoyage?id=${voyage.id }" class="tm-tours-box-2-link">Book Now</a>
 					</div>
 				</div>
 				</c:forEach>

@@ -39,9 +39,8 @@ public class ContactServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 		if(request.getServletPath().equals("/contact")) {
-			sendEmail.sendMail(request.getParameter("email"), request.getParameter("name"),
-					request.getParameter("subject"), request.getParameter("text"), request.getParameter("password"));
-			
+			sendEmail.sendMail(request.getParameter("name"),request.getParameter("subject"),request.getParameter("text") );
+			request.getRequestDispatcher("/contact.jsp").forward(request, response);
 		}
 	}
 

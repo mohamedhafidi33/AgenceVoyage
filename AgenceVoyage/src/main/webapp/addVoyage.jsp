@@ -94,13 +94,8 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Form elements </h3>
-              <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Form elements</li>
-                </ol>
-              </nav>
+              <h3 class="page-title"> Gestion Voyage </h3>
+              
             </div>
             <div class="row">
               <div class="col-md-6 grid-margin stretch-card">
@@ -116,20 +111,50 @@
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Départ</label>
+                        <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Départ
+                        </label>
                         <div class="col-sm-9">
-                          <input type="text"  name="depart" class="form-control" id="exampleInputEmail2" placeholder="depart">
+                      <select name="depart" class="form-control" id="exampleFormControlSelect2">
+                        <option>FES</option>
+                        <option>MEKNES</option>
+                        <option>RABAT</option>
+                        <option>CASABLANCA</option>
+                        <option>CHEFCHAOUAN</option>
+                        <option>DAKHLA</option>
+                        <option>MARRAKECH</option>
+                        <option>ESSAOUIRA</option>
+                        <option>TANGER</option>
+                        <option>ELAARAYECH</option>
+                        <option>BENGUERIR</option>
+                        <option>SEMARA</option>
+                        <option>IFRANE</option>
+                      </select>
+                    </div>
                         </div>
-                      </div>
                       <div class="form-group row">
-                        <label for="exampleInputMobile" class="col-sm-3 col-form-label">Déstination</label>
+                        <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Déstination
+                        </label>
                         <div class="col-sm-9">
-                          <input type="text" name="destination" class="form-control" id="exampleInputMobile" placeholder="destination">
+                      <select name="destination" class="form-control" id="exampleFormControlSelect2">
+                        <option>FES</option>
+                        <option>MEKNES</option>
+                        <option>RABAT</option>
+                        <option>CASABLANCA</option>
+                        <option>CHEFCHAOUAN</option>
+                        <option>DAKHLA</option>
+                        <option>MARRAKECH</option>
+                        <option>ESSAOUIRA</option>
+                        <option>TANGER</option>
+                        <option>ELAARAYECH</option>
+                        <option>BENGUERIR</option>
+                        <option>SEMARA</option>
+                        <option>IFRANE</option>
+                      </select>
+                    </div>
                         </div>
-                      </div>
                       <div class="form-group row">
                        <label for="exampleInputMobile" class="col-sm-3 col-form-label">Déscription</label>
-                      <div class="form-group row">
+                      <div class="col-sm-9">
 							<input id="contact_message" name="description" class="form-control" rows="6" placeholder="Déscription"></input>
 						</div>
 						</div>
@@ -300,12 +325,7 @@
               
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
-          <footer class="footer">
-            <div class="container-fluid clearfix">
-              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
-              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates </a> from Bootstrapdash.com</span>
-            </div>
-          </footer>
+         
           <!-- partial -->
         </div>
         <!-- main-panel ends -->

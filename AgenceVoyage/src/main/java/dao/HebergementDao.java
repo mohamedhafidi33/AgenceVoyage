@@ -10,6 +10,7 @@ import beans.Activite;
 import beans.Client;
 import beans.Hebergement;
 import beans.Transport;
+import beans.Voyage;
 
 public class HebergementDao {
 	private static Session session = HibernateUtil.getSessionFactory().openSession();
@@ -29,5 +30,11 @@ public class HebergementDao {
 		req.setParameter("x",nom);
 		List<Hebergement> hebergements=req.getResultList();
 		return hebergements.get(0);
+	}
+	public List<Hebergement> hebergementsByVoyage(Voyage v){
+		Query req = session.createQuery("select h from Hebergement h where h.voyage like :x");
+		req.setParameter("x",v);
+		List<Hebergement> hebergements=req.getResultList();
+		return hebergements;
 	}
 }

@@ -108,6 +108,9 @@ public class TripServlet extends HttpServlet {
 		}
 		if(request.getServletPath().equals("/detailVoyage")) {
 			System.out.println(request.getParameter("id"));
+			request.setAttribute("hebergements", hebergementDao.hebergementsByVoyage(voyageDao.getVoyage(Integer.parseInt(request.getParameter("id").trim()))).get(0));
+			request.setAttribute("activites", activiteDao.activitesByVoyage(voyageDao.getVoyage(Integer.parseInt(request.getParameter("id").trim()))));
+			request.setAttribute("transports", transportDao.transportsByVoyage(voyageDao.getVoyage(Integer.parseInt(request.getParameter("id").trim()))));
 			request.setAttribute("voyage", voyageDao.getVoyage(Integer.parseInt(request.getParameter("id").trim())));
 			request.getRequestDispatcher("/details.jsp").forward(request, response);
 		}

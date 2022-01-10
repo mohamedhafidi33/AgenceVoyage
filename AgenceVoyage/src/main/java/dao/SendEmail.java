@@ -11,13 +11,13 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class SendEmail {
-	public void sendMail(final String from,String name,String subject,String text,final String password) {
+	public void sendMail(String name,String subject,String msg) {
 		 // Recipient's email ID needs to be mentioned.
       // String to = "mohamed.hafidi.mh@gmail.com";
 
        // Sender's email ID needs to be mentioned
-       String to ="meknesbachelor99@gmail.com";
-
+       String from ="meknesbachelor99@gmail.com";
+       String to="mohamed.hafidi.mh@gmail.com";
        // Assuming you are sending email from through gmails smtp
        String host = "smtp.gmail.com";
 
@@ -35,7 +35,7 @@ public class SendEmail {
 
            protected PasswordAuthentication getPasswordAuthentication() {
 
-               return new PasswordAuthentication(from,password);
+               return new PasswordAuthentication("meknesbachelor99@gmail.com", "olpkghfgtikjycyc");
 
            }
 
@@ -55,10 +55,10 @@ public class SendEmail {
            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
            // Set Subject: header field
-           message.setSubject(subject);
+           message.setSubject(subject+" de "+name);
 
            // Now set the actual message
-           message.setText(text);
+           message.setText(msg);
 
            System.out.println("sending...");
            // Send message

@@ -97,12 +97,9 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Form elements </h3>
+              <h3 class="page-title"> Gestion de Voyage </h3>
               <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Form elements</li>
-                </ol>
+                
               </nav>
             </div>
             <div class="row">
@@ -110,7 +107,7 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Modification d'un voyage</h4>
-                    <p class="card-description"> entrer les informations necessaire </p>
+                    <p class="card-description"> Entrer les informations necessaire </p>
                     <form class="forms-sample" enctype='multipart/form-data' action="editVoyage" method="post" >
                       <div class="form-group row">
                         <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Nom du voyage</label>
@@ -133,7 +130,7 @@
                       </div>
                       <div class="form-group row">
                        <label for="exampleInputMobile" class="col-sm-3 col-form-label">Déscription</label>
-                      <div class="form-group row">
+                      <div class="col-sm-9">
 							<input id="contact_message" name="description" value="${voyage.description }" class="form-control" rows="6" placeholder="Déscription">
 						</div>
 						</div>
@@ -256,12 +253,7 @@
               
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
-          <footer class="footer">
-            <div class="container-fluid clearfix">
-              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
-              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates </a> from Bootstrapdash.com</span>
-            </div>
-          </footer>
+          
           <!-- partial -->
         </div>
         <!-- main-panel ends -->

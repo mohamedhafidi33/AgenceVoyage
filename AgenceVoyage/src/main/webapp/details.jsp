@@ -24,29 +24,15 @@
   <body class="hold-transition">
   	<div class="wrapper">
   	<!-- Header -->
-  	<div class="tm-header">
-  		<div class="container">
-  			<div class="row">
-  				<div class="col-lg-6 col-md-4 col-sm-3 tm-site-name-container">
-  					<a href="#" class="tm-site-name">Holiday</a>	
-  				</div>
-	  			<div class="col-lg-6 col-md-8 col-sm-9">
-	  				<div class="mobile-menu-icon">
-		              <i class="fa fa-bars"></i>
-		            </div>
-	  				<nav class="tm-nav">
-						<ul>
-							<li><a href="index.html" >Home</a></li>
-							<li><a href="">Login</a></li>
-							<li><a href="">Register</a></li>
-							
-							<li><a href="contact.html">Contact</a></li>
-						</ul>
-					</nav>		
-	  			</div>				
-  			</div>
-  		</div>	  	
-  	</div>
+  	<body class="tm-gray-bg">
+  <c:choose>
+  <c:when test="${client!=null }">
+  	<%@include file="headerClient.jsp"%>
+  	</c:when>
+  	<c:otherwise>
+  	<%@include file="userHeader.jsp"%>
+  	</c:otherwise>
+  	</c:choose>
 	
 	<!-- Banner -->
 	<div class="content-wrapper">
@@ -165,13 +151,29 @@
                 </h2>
               </div>
               
-              <div class="mt-4">
+             
+  <c:choose>
+  <c:when test="${client!=null }">
+  	<div class="mt-4">
                 <a href="reserverVoyage?id=${voyage.id }" class="btn btn-primary btn-lg btn-flat">
                   <i  class="fas fa-cart-plus fa-lg mr-2"></i>
                   Reserer
                 </a>
 
               </div>
+  	</c:when>
+  	<c:otherwise>
+  	<div class="mt-4">
+                <a href="loginPage" class="btn btn-primary btn-lg btn-flat">
+                  <i  class="fas fa-cart-plus fa-lg mr-2"></i>
+                  Reserer
+                </a>
+
+              </div>
+  	</c:otherwise>
+  	</c:choose>
+              
+              
 
 <!--               <div class="mt-4 product-share"> -->
 <!--                 <a href="#" class="text-gray"> -->
@@ -200,7 +202,7 @@
             </nav>
             <div class="tab-content p-3" id="nav-tabContent">
               <div class="tab-pane fade show active" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab"> ${voyage.description } </div>
-              <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab"> Vivamus rhoncus nisl sed venenatis luctus. Sed condimentum risus ut tortor feugiat laoreet. Suspendisse potenti. Donec et finibus sem, ut commodo lectus. Cras eget neque dignissim, placerat orci interdum, venenatis odio. Nulla turpis elit, consequat eu eros ac, consectetur fringilla urna. Duis gravida ex pulvinar mauris ornare, eget porttitor enim vulputate. Mauris hendrerit, massa nec aliquam cursus, ex elit euismod lorem, vehicula rhoncus nisl dui sit amet eros. Nulla turpis lorem, dignissim a sapien eget, ultrices venenatis dolor. Curabitur vel turpis at magna elementum hendrerit vel id dui. Curabitur a ex ullamcorper, ornare velit vel, tincidunt ipsum. </div>
+              <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab"> ${hebergements.nom } </div>
               <div class="tab-pane fade" id="product-rating" role="tabpanel" aria-labelledby="product-rating-tab"> Cras ut ipsum ornare, aliquam ipsum non, posuere elit. In hac habitasse platea dictumst. Aenean elementum leo augue, id fermentum risus efficitur vel. Nulla iaculis malesuada scelerisque. Praesent vel ipsum felis. Ut molestie, purus aliquam placerat sollicitudin, mi ligula euismod neque, non bibendum nibh neque et erat. Etiam dignissim aliquam ligula, aliquet feugiat nibh rhoncus ut. Aliquam efficitur lacinia lacinia. Morbi ac molestie lectus, vitae hendrerit nisl. Nullam metus odio, malesuada in vehicula at, consectetur nec justo. Quisque suscipit odio velit, at accumsan urna vestibulum a. Proin dictum, urna ut varius consectetur, sapien justo porta lectus, at mollis nisi orci et nulla. Donec pellentesque tortor vel nisl commodo ullamcorper. Donec varius massa at semper posuere. Integer finibus orci vitae vehicula placerat. </div>
             </div>
           </div>
