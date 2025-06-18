@@ -7,10 +7,11 @@ import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 @Entity
-@Data @AllArgsConstructor
+@Data @AllArgsConstructor @NoArgsConstructor
 @Table(name="Client")
 public class Client {
 	

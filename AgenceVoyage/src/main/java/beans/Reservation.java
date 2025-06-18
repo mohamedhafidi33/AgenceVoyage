@@ -13,9 +13,10 @@ import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Data @AllArgsConstructor
+@Data @AllArgsConstructor @NoArgsConstructor
 @Table(name="Reservation")
 public class Reservation {
 	
